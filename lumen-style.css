@@ -21,7 +21,7 @@ body {
 /* Header Styles */
 .header {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(100px);
     box-shadow: 0 2px 20px rgba(74, 144, 226, 0.1);
     position: fixed;
     top: 0;
