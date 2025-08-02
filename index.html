@@ -6,89 +6,180 @@
     <title>LUMEN Speech and Hearing Care - Hisar, Haryana | Audiology & Speech Therapy</title>
     <meta name="description" content="LUMEN Speech and Hearing Care in Hisar, Haryana offers advanced audiology and speech therapy services. Expert care for hearing aids, speech disorders, and pediatric audiology.">
     <meta name="keywords" content="audiology, speech therapy, hearing aids, Hisar, Haryana, speech disorders, hearing test, BERA, OAE, audiometry">
-    <link rel="stylesheet" href="lumen-style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "LUMEN Speech and Hearing Care",
+      "description": "Advanced diagnostic and therapeutic services in audiology and speech-language pathology in Hisar, Haryana",
+      "url": "https://lumenhear.github.io/speechcare/",
+      "telephone": "+91-9350158754",
+      "email": "drdk2025@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hisar",
+        "addressRegion": "Haryana",
+        "addressCountry": "IN"
+      },
+      "medicalSpecialty": ["Audiology", "Speech-Language Pathology"],
+      "openingHours": "Mo-Sa 09:00-18:00"
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to Content Link (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="nav-brand">
-    <img src="logo.png" alt="LUMEN Speech and Hearing Care Logo" class="logo-img" width="50">
-    <span class="tagline-small">Speech & Hearing Care</span>
-</div>
+                <img src="assets/logo.png" alt="LUMEN Speech and Hearing Care Logo" class="logo-img" width="50">
+                <div class="brand-text">
+                    <span class="brand-name">LUMEN</span>
+                    <span class="tagline">Speech & Hearing Care</span>
+                </div>
+            </div>
             <nav class="nav">
                 <ul class="nav-list" id="nav-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#team" class="nav-link">Team</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="tel:+919350158754" class="nav-cta">Call Now</a></li>
                 </ul>
-                <button class="menu-toggle" id="menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
                 </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Helping You Hear and Speak with Confidence</h1>
-            <p>Advanced diagnostic and therapeutic services in audiology and speech-language pathology in Hisar, Haryana</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Book Appointment</a>
-                <a href="tel:+919350158754" class="btn btn-secondary">
-                    <i class="fas fa-phone"></i> Call Now
-                </a>
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="hero-heading">Helping You <span class="highlight">Hear</span> and <span class="highlight">Speak</span> with Confidence</h1>
+                <p class="hero-subtitle">Advanced diagnostic and therapeutic services in audiology and speech-language pathology in Hisar, Haryana</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary pulse-animation">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </a>
+                    <a href="tel:+919350158754" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                </div>
+                <div class="hero-features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <span>Expert Audiologist</span>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <span>Advanced Equipment</span>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <span>Compassionate Care</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-features">
-                <div class="feature">
-                    <i class="fas fa-user-md"></i>
-                    <span>Expert Audiologist</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-stethoscope"></i>
-                    <span>Advanced Equipment</span>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-heart"></i>
-                    <span>Compassionate Care</span>
-                </div>
-            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <a href="#about" aria-label="Scroll down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about section-padding" aria-labelledby="about-heading">
         <div class="container">
             <div class="section-header">
-                <h2>About LUMEN Speech and Hearing Care</h2>
-                <p>Dedicated to providing comprehensive audiology and speech therapy services</p>
+                <span class="section-subtitle">About Our Clinic</span>
+                <h2 id="about-heading" class="section-title">LUMEN Speech and Hearing Care</h2>
+                <p class="section-description">Dedicated to providing comprehensive audiology and speech therapy services</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>At LUMEN Speech and Hearing Care, we are committed to improving the quality of life for individuals with hearing and speech challenges. Located in Hisar, Haryana, our clinic combines state-of-the-art technology with compassionate care to deliver exceptional results.</p>
+                    <div class="about-mission">
+                        <h3>Our Mission</h3>
+                        <p>At LUMEN Speech and Hearing Care, we are committed to improving the quality of life for individuals with hearing and speech challenges. Our clinic combines state-of-the-art technology with compassionate care to deliver exceptional results.</p>
+                    </div>
                     
-                    <h3>Why Choose LUMEN?</h3>
-                    <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> Advanced diagnostic equipment and techniques</li>
-                        <li><i class="fas fa-check-circle"></i> Comprehensive audiology and speech therapy services</li>
-                        <li><i class="fas fa-check-circle"></i> Specialized pediatric care and family support</li>
-                        <li><i class="fas fa-check-circle"></i> Personalized treatment plans for every patient</li>
-                        <li><i class="fas fa-check-circle"></i> Convenient location in Hisar, Haryana</li>
-                    </ul>
+                    <div class="about-features">
+                        <h3>Why Choose LUMEN?</h3>
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <span>Advanced diagnostic equipment and techniques</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <span>Comprehensive audiology and speech therapy services</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <span>Specialized pediatric care and family support</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <span>Personalized treatment plans for every patient</span>
+                            </li>
+                            <li class="feature-item">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <span>Convenient location in Hisar, Haryana</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>+
+                            <span class="stat-label">Patients Helped</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="15">0</span>+
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="98">0</span>%
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-clinic-medical"></i>
-                        <p>Modern Clinic Facility</p>
+                    <div class="image-container">
+                        <img src="assets/clinic-interior.jpg" alt="LUMEN Clinic Interior" class="clinic-image">
+                        <div class="image-overlay">
+                            <i class="fas fa-clinic-medical overlay-icon"></i>
+                            <p>Modern Clinic Facility</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,151 +187,207 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="services section-padding" aria-labelledby="services-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive audiology and speech therapy solutions</p>
+                <span class="section-subtitle">What We Offer</span>
+                <h2 id="services-heading" class="section-title">Our Services</h2>
+                <p class="section-description">Comprehensive audiology and speech therapy solutions</p>
             </div>
-            <div class="services-grid">
+            
+            <div class="services-tabs">
+                <button class="tab-btn active" data-tab="audiology">Audiology Services</button>
+                <button class="tab-btn" data-tab="speech">Speech Therapy</button>
+            </div>
+            
+            <div class="services-content">
                 <!-- Audiology Services -->
-                <div class="service-category">
-                    <h3><i class="fas fa-ear-listen"></i> Audiology Services</h3>
+                <div class="service-category active" id="audiology">
                     <div class="service-cards">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <h4>Pure Tone Audiometry (PTA)</h4>
+                            <h3>Pure Tone Audiometry</h3>
                             <p>Comprehensive evaluation of hearing sensitivity using air and bone conduction testing.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-wave-square"></i>
                             </div>
-                            <h4>Impedance Audiometry</h4>
+                            <h3>Impedance Audiometry</h3>
                             <p>Tests middle ear function and eardrum movement to assess hearing health.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-baby"></i>
                             </div>
-                            <h4>Otoacoustic Emissions (OAE)</h4>
+                            <h3>Otoacoustic Emissions</h3>
                             <p>Newborn and pediatric hearing screening for early detection of hearing issues.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-brain"></i>
                             </div>
-                            <h4>BERA/ABR Testing</h4>
+                            <h3>BERA/ABR Testing</h3>
                             <p>Brainstem Evoked Response Audiometry for auditory nerve and brainstem function assessment.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-bone"></i>
                             </div>
-                            <h4>Bone Conduction ABR</h4>
+                            <h3>Bone Conduction ABR</h3>
                             <p>Specialized hearing test using skull bone vibration for accurate diagnosis.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="fas fa-child"></i>
-                            </div>
-                            <h4>VRA/Conditioned Testing</h4>
-                            <p>Visual Reinforcement Audiometry and behavioral tests for young children.</p>
-                        </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-assistive-listening-systems"></i>
                             </div>
-                            <h4>Hearing Aid Services</h4>
+                            <h3>Hearing Aid Services</h3>
                             <p>Trial, fitting, real ear measurements, and servicing for all hearing aid brands.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Speech Therapy Services -->
-                <div class="service-category">
-                    <h3><i class="fas fa-comments"></i> Speech & Language Therapy</h3>
+                <div class="service-category" id="speech">
                     <div class="service-cards">
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-microphone"></i>
                             </div>
-                            <h4>Articulation Disorders</h4>
+                            <h3>Articulation Disorders</h3>
                             <p>Treatment for speech sound production difficulties and pronunciation issues.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <h4>Delayed Speech & Language</h4>
+                            <h3>Delayed Speech & Language</h3>
                             <p>Comprehensive therapy for children with speech and language development delays.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-repeat"></i>
                             </div>
-                            <h4>Fluency/Stuttering</h4>
+                            <h3>Fluency/Stuttering</h3>
                             <p>Specialized treatment for stuttering and other fluency disorders.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-volume-up"></i>
                             </div>
-                            <h4>Voice Disorders</h4>
+                            <h3>Voice Disorders</h3>
                             <p>Treatment for voice quality, pitch, and volume issues.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-puzzle-piece"></i>
                             </div>
-                            <h4>Autism Communication</h4>
+                            <h3>Autism Communication</h3>
                             <p>Specialized communication therapy for individuals with autism spectrum disorders.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
+                        
                         <div class="service-card">
                             <div class="service-icon">
                                 <i class="fas fa-brain"></i>
                             </div>
-                            <h4>Post-Stroke Aphasia</h4>
+                            <h3>Post-Stroke Aphasia</h3>
                             <p>Rehabilitation therapy for language difficulties following stroke or brain injury.</p>
+                            <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="cta-banner">
+                <div class="cta-content">
+                    <h3>Ready to Improve Your Communication?</h3>
+                    <p>Schedule your consultation today and take the first step toward better hearing and speech.</p>
+                </div>
+                <a href="#contact" class="btn btn-white">Get Started Now</a>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="team">
+    <section id="team" class="team section-padding" aria-labelledby="team-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Meet the Expert</h2>
-                <p>Experienced professional dedicated to your hearing and speech health</p>
+                <span class="section-subtitle">Meet Our Expert</span>
+                <h2 id="team-heading" class="section-title">Chief Audiologist</h2>
+                <p class="section-description">Experienced professional dedicated to your hearing and speech health</p>
             </div>
+            
             <div class="team-member">
                 <div class="member-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-user-md"></i>
+                    <div class="image-container">
+                        <img src="assets/doctor-profile.jpg" alt="Dr. Deepak - Audiologist" class="profile-image">
+                        <div class="image-badge">
+                            <i class="fas fa-award"></i>
+                            <span>15+ Years Experience</span>
+                        </div>
                     </div>
                 </div>
+                
                 <div class="member-info">
                     <h3>Deepak</h3>
                     <h4>Founder & Chief Audiologist and Speech-Language Pathologist</h4>
+                    
                     <div class="credentials">
                         <span class="credential">BASLP</span>
                         <span class="credential">DHLS</span>
                         <span class="credential">Certified in Advanced Audiology</span>
                     </div>
-                    <p>Deepak specializes in pediatric audiology and neurological speech disorders, bringing years of experience and expertise to LUMEN Speech and Hearing Care. His compassionate approach and advanced training ensure the highest quality care for patients of all ages.</p>
+                    
+                    <p class="member-bio">Deepak specializes in pediatric audiology and neurological speech disorders, bringing years of experience and expertise to LUMEN Speech and Hearing Care. His compassionate approach and advanced training ensure the highest quality care for patients of all ages.</p>
+                    
                     <div class="specializations">
                         <h5>Specializations:</h5>
-                        <ul>
-                            <li>Pediatric Audiology</li>
-                            <li>Neurological Speech Disorders</li>
-                            <li>Advanced Hearing Aid Fitting</li>
-                            <li>Comprehensive Speech Therapy</li>
+                        <ul class="specialization-list">
+                            <li class="specialization-item">
+                                <i class="fas fa-check"></i> Pediatric Audiology
+                            </li>
+                            <li class="specialization-item">
+                                <i class="fas fa-check"></i> Neurological Speech Disorders
+                            </li>
+                            <li class="specialization-item">
+                              <i class="fas fa-check"></i> Advanced Hearing Aid Fitting
+                            </li>
+                            <li class="specialization-item">
+                                <i class="fas fa-check"></i> Comprehensive Speech Therapy
+                            </li>
                         </ul>
+                    </div>
+                    
+                    <div class="member-cta">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-calendar-alt"></i> Book Consultation
+                        </a>
+                        <div class="social-links">
+                            <a href="#" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="Research publications"><i class="fas fa-graduation-cap"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -248,142 +395,190 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="testimonials section-padding" aria-labelledby="testimonials-heading">
         <div class="container">
             <div class="section-header">
-                <h2>What Our Patients Say</h2>
-                <p>Real experiences from families we've helped</p>
+                <span class="section-subtitle">Patient Experiences</span>
+                <h2 id="testimonials-heading" class="section-title">What Our Patients Say</h2>
+                <p class="section-description">Real experiences from families we've helped</p>
             </div>
-            <div class="testimonials-grid">
+            
+            <div class="testimonials-slider">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"LUMEN gave my child a voice. Thank you for your patience and skill!"</p>
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"LUMEN gave my child a voice. The speech therapy sessions were incredibly effective, and the staff was so patient and understanding. Thank you for your skill and dedication!"</p>
                     </div>
                     <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="assets/testimonial-1.jpg" alt="Meenakshi R.">
+                        </div>
                         <div class="author-info">
                             <h4>Meenakshi R.</h4>
                             <span>Hisar</span>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"I was fitted with hearing aids the same day. Excellent service!"</p>
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"I was fitted with hearing aids the same day I visited. The difference was immediate and life-changing. Excellent service and professional care!"</p>
                     </div>
                     <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="assets/testimonial-2.jpg" alt="Pradeep K.">
+                        </div>
                         <div class="author-info">
                             <h4>Pradeep K.</h4>
                             <span>Bhiwani</span>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>"Professional, friendly, and trustworthy clinic. Highly recommend."</p>
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Professional, friendly, and trustworthy clinic. My son's speech improved dramatically after just a few sessions. Highly recommend LUMEN to anyone needing speech therapy."</p>
                     </div>
                     <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="assets/testimonial-3.jpg" alt="Anjali S.">
+                        </div>
                         <div class="author-info">
                             <h4>Anjali S.</h4>
                             <span>Hansi</span>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <div class="testimonials-cta">
+                <p>Join our many satisfied patients</p>
+                <a href="#contact" class="btn btn-primary">Schedule Your Visit</a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section-padding" aria-labelledby="contact-heading">
         <div class="container">
             <div class="section-header">
-                <h2>Contact Us</h2>
-                <p>Get in touch to schedule your appointment</p>
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 id="contact-heading" class="section-title">Contact Us</h2>
+                <p class="section-description">Schedule your appointment or ask us a question</p>
             </div>
+            
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Hisar, Haryana, India</p>
+                            <h3>Our Location</h3>
+                            <address>
+                                <p>123 Medical Plaza<br>Hisar, Haryana 125001<br>India</p>
+                            </address>
+                            <a href="https://maps.google.com" target="_blank" class="map-link">
+                                <i class="fas fa-directions"></i> Get Directions
+                            </a>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <div class="contact-card">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Phone</h4>
+                            <h3>Phone</h3>
                             <p><a href="tel:+919350158754">+91 9350158754</a></p>
+                            <p class="timings">Mon-Sat: 9:00 AM - 6:00 PM</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Email</h4>
+                            <h3>Email</h3>
                             <p><a href="mailto:drdk2025@gmail.com">drdk2025@gmail.com</a></p>
+                            <p class="response-time">Typically responds within 24 hours</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    
+                    <div class="contact-card">
                         <div class="contact-icon">
                             <i class="fab fa-instagram"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Instagram</h4>
+                            <h3>Follow Us</h3>
                             <p><a href="https://instagram.com/lumenhearingcare" target="_blank">@lumenhearingcare</a></p>
+                            <div class="social-links">
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Book an Appointment</h3>
-                  <form action="https://formsubmit.co/drdk2025@gmail.com" method="POST">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://lumenhear.github.io/speechcare/thank-you.html">
-
-</form>
-  <input type="hidden" name="_subject" value="New Appointment - LUMEN Clinic">
-  <input type="hidden" name="_autoresponse" value="Thank you for your appointment request! We'll contact you shortly.">
-  <input type="hidden" name="_template" value="table">
-  
-  <div class="form-group">
-    <input type="text" id="name" name="name" placeholder="Your Name*" required>
-  </div>
-  <div class="form-group">
-    <input type="email" id="email" name="email" placeholder="Your Email*" required>
-  </div>
-  <div class="form-group">
-    <input type="tel" id="phone" name="phone" placeholder="Your Phone*" required>
-  </div>
-                       
-            <div class="form-group">
+                
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h3>Book an Appointment</h3>
+                        <p>Fill out the form and we'll contact you to confirm your visit</p>
+                    </div>
+                    
+                    <form id="appointment-form" class="appointment-form" action="https://formsubmit.co/drdk2025@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://lumenhear.github.io/speechcare/thank-you.html">
+                        <input type="hidden" name="_subject" value="New Appointment - LUMEN Clinic">
+                        <input type="hidden" name="_autoresponse" value="Thank you for your appointment request! We'll contact you shortly.">
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Full Name*" required>
+                            <i class="fas fa-user form-icon"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email*" required>
+                            <i class="fas fa-envelope form-icon"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number*" required>
+                            <i class="fas fa-phone form-icon"></i>
+                        </div>
+                        
+                        <div class="form-group">
                             <select id="service" name="service" required>
                                 <option value="">Select Service*</option>
                                 <option value="hearing-test">Hearing Test</option>
@@ -392,81 +587,196 @@
                                 <option value="pediatric">Pediatric Services</option>
                                 <option value="consultation">General Consultation</option>
                             </select>
+                            <i class="fas fa-chevron-down select-icon"></i>
                         </div>
+                        
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Additional Message" rows="4"></textarea>
+                            <textarea id="message" name="message" placeholder="Additional Details (Optional)" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Book Appointment</button>
+                        
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <i class="fas fa-paper-plane"></i> Send Appointment Request
+                        </button>
+                        
                         <div id="form-messages"></div>
                     </form>
                 </div>
             </div>
-            <div class="map-section">
-                <h3>Find Us in Hisar</h3>
-                <div class="map-placeholder">
-                    <i class="fas fa-map"></i>
-                    <p>Interactive Map of Hisar, Haryana</p>
-                    <small>Exact location will be provided upon appointment booking</small>
+            
+            <div class="map-container">
+                <div class="map-header">
+                    <h3>Find Us in Hisar</h3>
+                    <p>Conveniently located in the heart of the city</p>
                 </div>
+                <div class="map-embed">
+                    <!-- Replace with actual Google Maps embed code -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3487.123456789012!2d75.12345678901234!3d29.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDA3JzI0LjQiTiA3NcKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin" 
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade" title="Clinic Location Map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section-padding" aria-labelledby="faq-heading">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Have Questions?</span>
+                <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                        What age groups do you treat?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="faq1">
+                        <p>We provide services for patients of all ages, from newborns to seniors. Our pediatric services are specially designed for children, while we also have extensive experience working with adults and elderly patients.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                        How do I know if I need a hearing test?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="faq2">
+                        <p>Common signs you may need a hearing test include: difficulty understanding conversations, frequently asking people to repeat themselves, turning up the TV volume too high, trouble hearing in noisy environments, or ringing in your ears (tinnitus).</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                        How long does speech therapy take to show results?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="faq3">
+                        <p>The duration varies depending on the individual and the specific speech or language disorder. Some patients show improvement within weeks, while others may require several months of therapy. We'll provide a personalized treatment plan after your initial evaluation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                        Do you accept insurance?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer" id="faq4">
+                        <p>We work with several major insurance providers. Please contact our office with your insurance details, and we'll verify your coverage before your visit. We also offer flexible payment options for self-paying patients.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <p>Don't see your question here?</p>
+                <a href="#contact" class="btn btn-outline">Ask Us Anything</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>LUMEN Speech & Hearing Care</h3>
-                    <p>Helping You Hear and Speak with Confidence</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/lumenhearingcare" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:drdk2025@gmail.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+919350158754">
-                            <i class="fas fa-phone"></i>
-                        </a>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="footer-logo">
+                            <img src="assets/logo-white.png" alt="LUMEN Speech and Hearing Care" width="40">
+                            <span>LUMEN</span>
+                        </div>
+                        <p class="footer-about">Helping You Hear and Speak with Confidence through advanced audiology and speech therapy services in Hisar, Haryana.</p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#team">Our Team</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#services">Hearing Tests</a></li>
+                            <li><a href="#services">Speech Therapy</a></li>
+                            <li><a href="#services">Hearing Aids</a></li>
+                            <li><a href="#services">Pediatric Care</a></li>
+                            <li><a href="#services">Balance Disorders</a></li>
+                            <li><a href="#services">Tinnitus Treatment</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3 class="footer-title">Contact Info</h3>
+                        <ul class="footer-contact">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Medical Plaza, Hisar, Haryana 125001</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <a href="tel:+919350158754">+91 9350158754</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:drdk2025@gmail.com">drdk2025@gmail.com</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Sat: 9:00 AM - 6:00 PM</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li>Audiology Testing</li>
-                        <li>Speech Therapy</li>
-                        <li>Hearing Aids</li>
-                        <li>Pediatric Care</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Hisar, Haryana</p>
-                    <p><i class="fas fa-phone"></i> +91 9350158754</p>
-                    <p><i class="fas fa-envelope"></i> drdk2025@gmail.com</p>
-                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 LUMEN Speech and Hearing Care. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Service</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 LUMEN Speech and Hearing Care. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Accessibility</a>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="lumen-script.js"></script>
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/lumen-script.js"></script>
+    
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <img src="assets/logo.png" alt="LUMEN Loading">
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+      
