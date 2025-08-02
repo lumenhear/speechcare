@@ -80,11 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form Validation and Submission
     const appointmentForm = document.getElementById('appointment-form');
     if (appointmentForm) {
-        appointmentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+
             
             // Get form elements
-            const nameInput = document.getElementById('name');
+         const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
             const serviceSelect = document.getElementById('service');
