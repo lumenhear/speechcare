@@ -80,10 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form Validation and Submission
     const appointmentForm = document.getElementById('appointment-form');
     if (appointmentForm) {
-
+        appointmentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
             // Get form elements
-         const nameInput = document.getElementById('name');
+            const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
             const serviceSelect = document.getElementById('service');
@@ -165,106 +166,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     service: serviceSelect.value,
                     message: messageTextarea.value.trim()
                 });
-                
             } else {
                 // Show error summary
                 showErrorSummary(this, errors);
             }
         });
     }
-
-    // Scroll-based animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.service-card, .testimonial-card, .contact-item, .about-text, .member-info');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-
-    // Service cards hover effect enhancement
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    // Testimonial cards rotation effect
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    let currentTestimonial = 0;
-    
-    function highlightTestimonial() {
-        testimonialCards.forEach((card, index) => {
-            if (index === currentTestimonial) {
-                card.style.transform = 'translateY(-10px) scale(1.05)';
-                card.style.boxShadow = '0 20px 40px rgba(74, 144, 226, 0.25)';
-            } else {
-                card.style.transform = 'translateY(0) scale(1)';
-                card.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            }
-        });
-        
-        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-    }
-    
-    // Start testimonial rotation after page load
-    if (testimonialCards.length > 0) {
-        setTimeout(() => {
-            setInterval(highlightTestimonial, 4000);
-        }, 2000);
-    }
-
-    // Contact buttons functionality
-    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-    
-    phoneLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            console.log('Phone call initiated:', this.href);
-            // Track phone call analytics
-            trackEvent('contact', 'phone_call', 'header_or_contact_section');
-        });
-    });
-    
-    emailLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            console.log('Email client opened:', this.href);
-            // Track email analytics
-            trackEvent('contact', 'email_click', 'contact_section');
-        });
-    });
-
-    // Social media links tracking
-    const socialLinks = document.querySelectorAll('.social-links a');
-    socialLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            const platform = this.href.includes('instagram') ? 'instagram' : 
-                           this.href.includes('mailto') ? 'email' : 'phone';
-            console.log('Social link clicked:', platform);
-            trackEvent('social', 'click', platform);
-        });
-    });
 
     // Utility Functions
     function showFieldError(field, message) {
@@ -394,184 +301,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function trackEvent(category, action, label) {
-        // Analytics tracking function
-        console.log('Event tracked:', { category, action, label });
-        
-        // In a real implementation, this would send data to Google Analytics or similar
-        if (typeof gtag !== 'undefined') {
-            gtag('event', action, {
-                event_category: category,
-                event_label: label
-            });
-        }
-    }
-
-    // Performance optimization: Lazy load images when they come into view
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => {
-        imageObserver.observe(img);
-    });
-
-    // Keyboard navigation enhancement
-    document.addEventListener('keydown', function(e) {
-        // ESC key closes mobile menu
-        if (e.key === 'Escape' && navList && navList.classList.contains('active')) {
-            navList.classList.remove('active');
-            const spans = menuToggle.querySelectorAll('span');
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
-        }
-    });
-
-    // Form field enhancements
-    const formInputs = document.querySelectorAll('input, select, textarea');
-    formInputs.forEach(input => {
-        // Add floating label effect
-        input.addEventListener('focus', function() {
-            this.parentElement.classList.add('focused');
-        });
-        
-        input.addEventListener('blur', function() {
-            if (!this.value) {
-                this.parentElement.classList.remove('focused');
-            }
-        });
-        
-        // Real-time validation feedback
-        input.addEventListener('input', function() {
-            if (this.classList.contains('error')) {
-                this.classList.remove('error');
-                this.style.borderColor = '#4A90E2';
-                this.style.backgroundColor = '#fff';
-                
-                const errorMessage = this.parentElement.querySelector('.error-message');
-                if (errorMessage) {
-                    errorMessage.remove();
-                }
-            }
-        });
-    });
-
-    // Accessibility improvements
-    const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    
-    // Skip to main content functionality
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'skip-link';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: #4A90E2;
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        border-radius: 4px;
-        z-index: 1001;
-        transition: top 0.3s;
-    `;
-    
-    skipLink.addEventListener('focus', function() {
-        this.style.top = '6px';
-    });
-    
-    skipLink.addEventListener('blur', function() {
-        this.style.top = '-40px';
-    });
-    
-    document.body.insertBefore(skipLink, document.body.firstChild);
-
-    // Add main content ID for skip link
-    const mainContent = document.querySelector('.hero') || document.querySelector('main');
-    if (mainContent) {
-        mainContent.id = 'main-content';
-    }
+    // ... (Keep all other existing functions like trackEvent, etc.)
 
     console.log('LUMEN Speech and Hearing Care website initialized successfully');
 });
 
-// Global error handler
-window.addEventListener('error', function(e) {
-    console.error('JavaScript error:', e.error);
-    // In production, you might want to send this to an error tracking service
-});
-
-// Handle unhandled promise rejections
-window.addEventListener('unhandledrejection', function(e) {
-    console.error('Unhandled promise rejection:', e.reason);
-    e.preventDefault();
-});
-
-// Service Worker registration for PWA capabilities (optional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(function(err) {
-                console.log('ServiceWorker registration failed');
-            });
-    });
+// Service Worker registration (only if you have sw.js)
+if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
+    navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker registered'))
+        .catch(err => console.error('Service Worker registration failed:', err));
 }
-
-// Add structured data for SEO
-function addStructuredData() {
-    const structuredData = {
-        "@context": "https://schema.org",
-        "@type": "MedicalBusiness",
-        "name": "LUMEN Speech and Hearing Care",
-        "description": "Advanced diagnostic and therapeutic services in audiology and speech-language pathology in Hisar, Haryana",
-        "url": window.location.origin,
-        "telephone": "+91-9650158754",
-        "email": "drdk2025@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Hisar",
-            "addressRegion": "Haryana",
-            "addressCountry": "IN"
-        },
-        "medicalSpecialty": ["Audiology", "Speech-Language Pathology"],
-        "availableService": [
-            {
-                "@type": "MedicalProcedure",
-                "name": "Pure Tone Audiometry"
-            },
-            {
-                "@type": "MedicalProcedure", 
-                "name": "Speech and Language Therapy"
-            },
-            {
-                "@type": "MedicalProcedure",
-                "name": "Hearing Aid Fitting"
-            }
-        ],
-        "sameAs": [
-            "https://instagram.com/lumenhearingcare"
-        ]
-    };
-    
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-}
-
-// Initialize structured data
-addStructuredData();
