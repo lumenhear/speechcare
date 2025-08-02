@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 500);
+        });
+    }
+
     // Mobile Navigation Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
@@ -6,9 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (menuToggle && navList) {
         menuToggle.addEventListener('click', function() {
             navList.classList.toggle('active');
+            this.setAttribute('aria-expanded', navList.classList.contains('active'));
             
             // Animate hamburger menu
-            const spans = menuToggle.querySelectorAll('span');
+            const spans = this.querySelectorAll('.menu-line');
             spans.forEach((span, index) => {
                 if (navList.classList.contains('active')) {
                     if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -28,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             if (navList && navList.classList.contains('active')) {
                 navList.classList.remove('active');
-                const spans = menuToggle.querySelectorAll('span');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                const spans = menuToggle.querySelectorAll('.menu-line');
                 spans.forEach(span => {
                     span.style.transform = 'none';
                     span.style.opacity = '1';
@@ -41,41 +54,144 @@ document.addEventListener('DOMContentLoaded', function() {
     const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
     smoothScrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
+            if (this.hash !== "") {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                if (targetSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
             }
         });
     });
 
     // Header scroll effect
     const header = document.querySelector('.header');
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (header) {
+        let lastScrollTop = 0;
         
-        if (scrollTop > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.backdropFilter = 'blur(15px)';
-            header.style.boxShadow = '0 2px 25px rgba(74, 144, 226, 0.15)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-            header.style.boxShadow = '0 2px 20px rgba(74, 144, 226, 0.1)';
-        }
-        
-        lastScrollTop = scrollTop;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+                header.style.boxShadow = '0 2px 25px rgba(74, 144, 226, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.boxShadow = '0 2px 20px rgba(74, 144, 226, 0.1)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    }
+
+    // Service Tabs
+    const serviceTabs = document.querySelectorAll('.tab-btn');
+    if (serviceTabs.length > 0) {
+        serviceTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update active tab
+                serviceTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding content
+                document.querySelectorAll('.service-category').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            
+            const answer = this.nextElementSibling;
+            if (isExpanded) {
+                answer.style.maxHeight = '0';
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+            
+            // Rotate icon
+            const icon = this.querySelector('i');
+            icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
     });
+
+    // Animated Statistics
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-count'));
+                        const duration = 2000;
+                        const start = 0;
+                        const increment = target / (duration / 16);
+                        
+                        let current = start;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                clearInterval(timer);
+                                current = target;
+                            }
+                            stat.textContent = Math.floor(current);
+                        }, 16);
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.stats-container'));
+    }
+
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTop.style.opacity = '1';
+                backToTop.style.visibility = 'visible';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // Form Validation and Submission
     const appointmentForm = document.getElementById('appointment-form');
@@ -142,30 +258,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show success message
                 showSuccessMessage(this, 'Thank you for your appointment request! We will contact you within 24 hours to confirm your appointment.');
                 
-                // Log form data (in real implementation, this would be sent to server)
-                console.log('Appointment form submitted successfully:', {
-                    name: nameInput.value.trim(),
-                    email: emailInput.value.trim(),
-                    phone: phoneInput.value.trim(),
-                    service: serviceSelect.value,
-                    message: messageTextarea.value.trim(),
-                    timestamp: new Date().toISOString()
-                });
+                // Submit form data (using FormSubmit.co)
+                this.submit();
                 
                 // Reset form after a delay
                 setTimeout(() => {
                     this.reset();
                     hideSuccessMessage(this);
                 }, 8000);
-                
-                // Send notification email (simulated)
-                simulateEmailNotification({
-                    name: nameInput.value.trim(),
-                    email: emailInput.value.trim(),
-                    phone: phoneInput.value.trim(),
-                    service: serviceSelect.value,
-                    message: messageTextarea.value.trim()
-                });
             } else {
                 // Show error summary
                 showErrorSummary(this, errors);
@@ -173,13 +273,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Scroll animations
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.service-card, .testimonial-card, .contact-item, .about-text, .member-info');
+        elements.forEach(el => {
+            const elementPosition = el.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+            
+            if (elementPosition < screenPosition) {
+                el.classList.add('fade-in');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Run once on load
+
     // Utility Functions
     function showFieldError(field, message) {
-        field.style.borderColor = '#dc3545';
-        field.style.backgroundColor = '#fff5f5';
+        const formGroup = field.closest('.form-group');
+        if (!formGroup) return;
+        
+        field.classList.add('error');
+        formGroup.classList.add('has-error');
         
         // Remove existing error message
-        const existingError = field.parentElement.querySelector('.error-message');
+        const existingError = formGroup.querySelector('.error-message');
         if (existingError) {
             existingError.remove();
         }
@@ -188,17 +307,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.textContent = message;
-        field.parentElement.appendChild(errorDiv);
+        formGroup.appendChild(errorDiv);
     }
 
     function clearErrorStates(fields) {
         fields.forEach(field => {
-            field.style.borderColor = '#e0e0e0';
-            field.style.backgroundColor = '#fff';
-            
-            const errorMessage = field.parentElement.querySelector('.error-message');
-            if (errorMessage) {
-                errorMessage.remove();
+            field.classList.remove('error');
+            const formGroup = field.closest('.form-group');
+            if (formGroup) {
+                formGroup.classList.remove('has-error');
+                
+                const errorMessage = formGroup.querySelector('.error-message');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
             }
         });
         
@@ -224,9 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.appendChild(errorTitle);
         
         const errorList = document.createElement('ul');
-        errorList.style.marginTop = '0.5rem';
-        errorList.style.marginBottom = '0';
-        errorList.style.paddingLeft = '1.5rem';
+        errorList.className = 'error-list';
         
         errors.forEach(error => {
             const listItem = document.createElement('li');
@@ -255,8 +375,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const successDiv = document.createElement('div');
         successDiv.className = 'success-message';
         successDiv.innerHTML = `
-            <i class="fas fa-check-circle" style="margin-right: 0.5rem; color: #28a745;"></i>
-            ${message}
+            <i class="fas fa-check-circle"></i>
+            <span>${message}</span>
         `;
         
         const formMessages = document.getElementById('form-messages');
@@ -281,34 +401,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function simulateEmailNotification(formData) {
-        // Simulate sending email notification to clinic
-        console.log('Email notification sent to clinic:', {
-            to: 'drdk2025@gmail.com',
-            subject: `New Appointment Request - ${formData.service}`,
-            body: `
-                New appointment request received:
-                
-                Name: ${formData.name}
-                Email: ${formData.email}
-                Phone: ${formData.phone}
-                Service: ${formData.service}
-                Message: ${formData.message || 'No additional message'}
-                
-                Please contact the patient to confirm the appointment.
-            `,
-            timestamp: new Date().toISOString()
-        });
-    }
-
-    // ... (Keep all other existing functions like trackEvent, etc.)
-
     console.log('LUMEN Speech and Hearing Care website initialized successfully');
 });
 
-// Service Worker registration (only if you have sw.js)
+// Service Worker registration
 if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
-    navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker registered'))
-        .catch(err => console.error('Service Worker registration failed:', err));
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered'))
+            .catch(err => console.error('Service Worker registration failed:', err));
+    });
 }
